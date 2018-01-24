@@ -94,7 +94,7 @@
                 <img src="{{  $product->featured_image_url  }}" alt="No tiene imgen asignada" class="img-raised img-circle">
                 <h4 class="title"> <a href="{{ url('/products/'.$product->id) }}">{{ $product->name }}</a>
                   <br />
-                  <small class="text-muted">{{ $product->category->name }}</small>
+                  <small class="text-muted">{{ $product->getCategoryNameAtributte() }}</small>
                 </h4>
                 <p class="description">{{ $product->description }} <a href="#">links</a> for people to be able to follow them outside the site.</p>
 

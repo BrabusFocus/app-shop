@@ -36,6 +36,9 @@ Route::post('/order', 'CartController@update');
  * Al usar el metodo namespace('Admin') se evita escribit Admin\ por cada ruta Route::get('/products', 'Admin\ProductController@index');
  */
  Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(function () {
+   /**
+    * Rutas para la Gestion de productos
+    */
    Route::get('/products', 'ProductController@index');//Listado
    Route::get('/products/create', 'ProductController@create');//Muestra el formulario para crear producto
    Route::post('/products', 'ProductController@store');//almacenar datos del producto
@@ -47,4 +50,15 @@ Route::post('/order', 'CartController@update');
    Route::post('/products/{id}/images', 'ImageController@store');//Registrar
    Route::delete('/products/{id}/images', 'ImageController@destroy');//Registrar
    Route::get('/products/{id}/images/select/{image}', 'ImageController@select');//Destacar imagenes
+
+   /**
+    * Rutas para la gestion de Categorias
+    */
+    Route::get('/categories', 'CategoryController@index');//Listado
+    Route::get('/categories/create', 'CategoryController@create');//Muestra el formulario para crear producto
+    Route::post('/categories', 'CategoryController@store');//almacenar datos del producto
+    Route::get('/categories/{category}/edit', 'CategoryController@edit');//Muestra el formulario para editar producto
+    Route::post('/categories/{category}/edit', 'CategoryController@update');//Actualizar datos del producto
+    Route::delete('/categories/{category}', 'CategoryController@delete');//Actualizar datos del producto
+
  });

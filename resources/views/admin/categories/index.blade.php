@@ -11,44 +11,37 @@
 <div class="main main-raised">
 <div class="container">
     <div class="section text-center">
-          <h2 class="title">Listado de Productos</h2>
+          <h2 class="title">Listado de Categorias</h2>
         <div class="team">
         <div class="row">
-          <a  href="{{ url('admin/products/create') }}"class="btn btn-primary btn-round">Añadir Producto</a>
+          <a  href="{{ url('admin/categories/create') }}"class="btn btn-primary btn-round">Añadir Categoría</a>
           <table class="table">
               <thead>
                   <tr>
                       <th class="text-center">#</th>
                       <th class="col-md-2 text-center">Nombre</th>
                       <th class="col-md-5 text-center">Descripción</th>
-                      <th text-center>Categoría</th>
-                      <th class="text-right">Precio</th>
                       <th class="text-right">Acciones</th>
                   </tr>
               </thead>
               <tbody>
-                @foreach ($products as $row )
+                @foreach ($categories as $key => $row )
                   <tr>
-                      <td class="text-center">{{ $row->id }}</td>
+                      <td class="text-center">{{ ($key+1) }}</td>
                       <td>{{ $row->name }}</td>
                       <td>{{ $row->description }}</td>
-                      <td>{{ $row->category ? $row->category->name : 'General' }}</td>
-                      <td class="text-right">$ {{ $row->price }}</td>
                       <td class="td-actions text-right">
-                          <form action="{{ url('/admin/products/'.$row->id) }}" method="post">
+                          <form action="{{ url('/admin/categories/'.$row->id) }}" method="post">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}
                               <!-- Es equivalente a
                               <input type="hidden" name="_token" value="{{ csrf_field() }}">
                               <input type="hidden" name="_method" value="DELETE"> -->
-                              <a href="{{ url('/products/'.$row->id) }}" type="button" rel="tooltip" title="Ver Producto" class="btn btn-info btn-simple btn-xs" target="_blank">
+                              <a href="#" type="button" rel="tooltip" title="Ver Categoría" class="btn btn-info btn-simple btn-xs">
                                   <i class="fa fa-info"></i>
                               </a>
-                              <a href="{{ url('/admin/products/'.$row->id.'/edit') }}" type="button" rel="tooltip" title="Editar Producto" class="btn btn-success btn-simple btn-xs">
+                              <a href="{{ url('/admin/categories/'.$row->id.'/edit') }}" type="button" rel="tooltip" title="Editar Categoría" class="btn btn-success btn-simple btn-xs">
                                   <i class="fa fa-edit"></i>
-                              </a>
-                              <a href="{{ url('/admin/products/'.$row->id.'/images') }}" type="button" rel="tooltip" title="Imágenes  del Producto" class="btn btn-warning btn-simple btn-xs">
-                                  <i class="fa fa-image"></i>
                               </a>
                               <button type="submit" rel="tooltip" title="Elminar" class="btn btn-danger btn-simple btn-xs">
                                   <i class="fa fa-times"></i>
@@ -59,7 +52,7 @@
                 @endforeach
               </tbody>
           </table>
-            {{ $products->links() }}
+            {{ $categories->links() }}
         </div>
     </div>
 
