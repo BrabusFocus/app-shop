@@ -25,4 +25,17 @@ class Category extends Model
   {
     return $this->hasMany(Product::class);
   }
+  /**
+  * Acceso
+   * Obtener la imagen destacada del producto y asingarnar como imagen de categoria
+   */
+  public function getFeaturedImageUrl()
+  {
+    # code...
+    /**
+     * El producto destacado , el producto mas vendido por categoria.
+     */
+    $featuredProduct = $this->products()->first();
+    return $featuredProduct->featured_image_url;
+  }
 }

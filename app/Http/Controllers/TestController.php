@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -9,7 +9,11 @@ class TestController extends Controller
     //
     public function welcome()
     {
-      $products = Product::paginate(9);
-      return view('welcome')->with(compact('products'));
+      /**
+       * Extraer solo la categorias que tiene productos asignados
+       * El metodo busca una relacion (hace un join )
+       */
+      $categories = Category::has('products')->get();//traer todas
+      return view('welcome')->with(compact('categories'));
     }
 }
