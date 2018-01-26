@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Facrinama;
 
 use Illuminate\Database\Eloquent\Model;
 

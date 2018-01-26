@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
-use App\Product;
-use App\ProductImage;
-use App\Category;
+namespace Facrinama\Http\Controllers\Admin;
+use Facrinama\Http\Controllers\Controller;
+use Facrinama\Product;
+use Facrinama\ProductImage;
+use Facrinama\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller

@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
-use App\Category;
-use App\ProductImage;
+namespace Facrinama;
+use Facrinama\Category;
+use Facrinama\ProductImage;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model

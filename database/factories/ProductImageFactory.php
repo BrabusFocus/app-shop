@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use App\ProductImage;
+use Facrinama\ProductImage;
 $factory->define(ProductImage::class, function (Faker $faker) {
     return [
         //

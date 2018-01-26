@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Facrinama\Http\Controllers;
 
 use Illuminate\Http\Request;
 

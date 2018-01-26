@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace Facrinama;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Cart;
+use Facrinama\Cart;
 class User extends Authenticatable
 {
     use Notifiable;

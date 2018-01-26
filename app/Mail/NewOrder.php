@@ -6,19 +6,26 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Facrinama\Mail\NewOrder;
+use Facrinama\Mail;
+use Facrinama\User;
+use Facrinama\Cart;
 
-class EmergencyCallReceived extends Mailable
+class NewOrder extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $user;
+    public $cart;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user,Cart $cart)
     {
         //
+        $this->user = $user;
+        $this->cart = $cart;
     }
 
     /**
@@ -28,6 +35,6 @@ class EmergencyCallReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.new-order')->subject('Nuevo Pedido');
     }
 }

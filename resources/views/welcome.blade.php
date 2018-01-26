@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('page-title','Bienvenido a '.config('app.name'))
 @section('body-class','landing-page')
 @section('styles')
 <style>
@@ -16,6 +17,45 @@
   display: flex;
   flex-direction: column;
 }
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+  color: #999
+}
+
+.tt-menu {    /* used to be tt-dropdown-menu in older versions */
+  width: 220px;
+  margin-top: 4px;
+  padding: 4px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  line-height: 24px;
+}
+
+.tt-suggestion.tt-cursor,.tt-suggestion:hover {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
 </style>
 @endsection
 
@@ -24,7 +64,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1 class="title">Bienvenido a Fracrinama</h1>
+        <h1 class="title">Bienvenido a {{ config('app.name') }}</h1>
         <h4>Realiza pedidos en línea y te contactaremos para coordinar la entrega.</h4>
         <br />
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger btn-raised btn-lg">
@@ -40,7 +80,7 @@
     <div class="section text-center section-landing">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h2 class="title">¿Por que Fracrinama?</h2>
+          <h2 class="title">¿Por que {{ config('app.name') }} ?</h2>
           <h5 class="description">Puedes revisar nuestra relacion completa de productos, comparar precios y reutilizar tus pedidos cuanto estes seguro.</h5>
         </div>
       </div>
@@ -86,8 +126,8 @@
         <h2 class="title">Visita nuestras Categorías</h2>
 
         <form class="form-inline" action="{{ url('/search') }}" method="get">
-          <input type="text" name="" placeholder="¿Qué necesitas?">
-          <button class="btn btn-primary btn-just-icon" type="submit"  name="query">
+          <input class="form-control" id="search" type="text" name="query" placeholder="¿Qué necesitas?">
+          <button class="btn btn-primary btn-just-icon" type="submit">
             <i class="material-icons">search</i>
           </button>
         </form>
@@ -152,6 +192,29 @@
     </div>
 
   </div>
-
-  @include('includes.footer');
+  @include('includes.footer')
+  @endsection
+  @section('scripts')
+  <script src="{{ asset('js/typeahead.bundle.min.js') }}"></script>
+  <script>
+  $(function () {
+    // constructs the suggestion engine (motor de  sugerencia Bloodhound)
+    var products = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.whitespace,
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      // Definir arreglo
+      prefetch:'{{ url("/products/json") }}'
+    });
+    // Inicializar typeahead sobre nuestro input de busqueda
+    $('#search').typeahead({
+      hint: true,
+      highlight: true,
+      minLength: 1
+    },
+    {
+      name: 'products',
+      source: products
+    });
+  });
+  </script>
   @endsection

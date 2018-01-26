@@ -26,12 +26,15 @@ Auth::routes();
  * Rutas para el cliente
  */
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/search', 'SearchController@show');
+Route::get('/products/json', 'SearchController@data');
+
 Route::get('/products/{id}', 'ProductController@show');//Muestra el formulario para editar producto
 Route::get('/categories/{category}', 'CategoryController@show');
 Route::post('/cart', 'CartDetailController@store');
 Route::delete('/cart', 'CartDetailController@destroy');
 Route::post('/order', 'CartController@update');
-Route::get('/search', 'SearchController@show');
+
 /**
  * Rutas-Panel-Admin
  * Se ha definido el grupo de rutas para que pasan por el filtro de los middleware auth (para validar si se ha inicado session)

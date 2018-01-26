@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Mail;
+namespace Facrinama\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Cart;
+use Facrinama\Cart;
 class OrderMails extends Mailable
 {
     use Queueable, SerializesModels;

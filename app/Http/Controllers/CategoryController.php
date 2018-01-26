@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Facrinama\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
+use Facrinama\Category;
 class CategoryController extends Controller
 {
     //

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Facrinama\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Facrinama\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Product;
-use App\ProductImage;
+use Facrinama\Product;
+use Facrinama\ProductImage;
 use File;
 class ImageController extends Controller
 {

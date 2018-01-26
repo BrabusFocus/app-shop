@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Facrinama\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use Facrinama\Product;
 class HomeController extends Controller
 {
     /**

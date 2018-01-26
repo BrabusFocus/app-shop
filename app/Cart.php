@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
-use App\CartDetail;
-use App\User;
+namespace Facrinama;
+use Facrinama\CartDetail;
+use Facrinama\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
@@ -19,5 +19,14 @@ class Cart extends Model
     {
 
       return $this->belongsTo(User::class);
+    }
+
+    public function getTotalAttribute()
+    {
+      $total = 0;
+      foreach ($this->details as $detail) {
+        $total += $detail->quantity * $detail->product->price;
+      }
+      return $total;
     }
 }

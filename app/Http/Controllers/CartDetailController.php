@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Facrinama\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CartDetail;
+use Facrinama\CartDetail;
 class CartDetailController extends Controller
 {
     /**
-     * El metedo getCartIdAttribute() es definido en el modelo App\User.php como campo de acceso o calculado.
+     * El metedo getCartIdAttribute() es definido en el modelo Facrinama\User.php como campo de acceso o calculado.
      * Este metodo crea el carrito para el usuario autenticado (en la bd) y retorna el carrito previamente creado.
      */
 

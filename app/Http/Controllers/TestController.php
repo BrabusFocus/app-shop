@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Category;
+namespace Facrinama\Http\Controllers;
+use Facrinama\Category;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
