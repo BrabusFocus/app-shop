@@ -25,15 +25,15 @@
     <hr>
     <p>Detalle del pedido</p>
     <ul>
-      @foreach (auth()->user()->cart->details as $detail)
+      @foreach ( $cart->details as $detail)
       <li>
         {{ $detail->product->name }} x {{ $detail->quantity }}
-        ($ {{ $detail->total() }} )
+        ($ {{ $detail->quantity * $detail->product->price }} )
       </li>
       @endforeach
     </ul>
     <p>
-      <strong>Importe a pagar :</strong> {{ auth()->user()->cart->total}}
+      <strong>Importe a pagar :</strong>$ {{ $cart->total }}
     </p>
     <p>
       <a href="{{ url('/admin/order/'.$cart->id) }}">Has clic aqui</a> para mas informacion
