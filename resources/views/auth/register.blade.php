@@ -7,6 +7,15 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 						<div class="card card-signup">
+							@if ($errors->any())
+									<div class="alert alert-danger">
+											<ul>
+													@foreach ($errors->all() as $error)
+															<li>{{ $error }}</li>
+													@endforeach
+											</ul>
+									</div>
+							@endif
 							<form class="form" method="POST" action="{{ route('register') }}">
                 {{ csrf_field() }}
 								<div class="header header-primary text-center">
@@ -38,16 +47,28 @@
                   </div>
 									<div class="input-group">
 										<span class="input-group-addon">
+											<i class="material-icons">fingerprint</i>
+										</span>
+                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Nombre de usuario"  required>
+                  </div>
+									<div class="input-group">
+										<span class="input-group-addon">
 											<i class="material-icons">email</i>
 										</span>
-                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="Correo Electronico...">
-                      @if ($errors->has('email'))
-                          <span class="help-block">
-                              <strong>{{ $errors->first('email') }}</strong>
-                          </span>
-                      @endif
+                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Correo Electronico...">
                   </div>
-
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">phone</i>
+										</span>
+                    <input id="phone" type="phone" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Telefono">
+                  </div>
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">class</i>
+										</span>
+                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="Dirección">
+                  </div>
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">lock_outline</i>

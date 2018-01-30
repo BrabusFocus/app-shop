@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use Facrinama\CartDetail;
 class CartDetailController extends Controller
 {
+  /**
+   * Aplicar el middleware de autenciacion
+   */
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
     /**
      * El metedo getCartIdAttribute() es definido en el modelo Facrinama\User.php como campo de acceso o calculado.
      * Este metodo crea el carrito para el usuario autenticado (en la bd) y retorna el carrito previamente creado.

@@ -26,11 +26,20 @@
       <div class="description text-center">
         <p>{{ $product->description }}</p>
       </div>
+      @if( auth()->check() )
+
       <div class="text-center">
         <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddToCart">
           <i class="material-icons">add</i> Añadir a carrito de compras
         </button>
       </div>
+      @else
+        <div class="text-center">
+      <a href="{{ url('/login?redirect_to='.url()->current()) }}" class="btn btn-primary btn-round">
+        <i class="material-icons">add</i> Añadir a carrito de compras
+      </a>
+      </div>
+      @endif
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="profile-tabs">

@@ -33,9 +33,17 @@ class Category extends Model
   {
     # code...
     /**
-     * El producto destacado , el producto mas vendido por categoria.
+     * Mostrar image  del producto destacado , el producto mas vendido por categoria. si la categorua
+     * no tiene productos y no tiene imagen asignada (la categorua) entonces mostrar imagen por default
      */
-    $featuredProduct = $this->products()->first();
-    return $featuredProduct->featured_image_url;
+     if ($this->image) {
+       return '/images/categories/'.$this->image;
+     }
+     $firstProduct = $this->products()->first();
+     if ($firstProduct) {
+       return $firstProduct->featured_image_url;
+     }
+
+    return '/images/default.png';
   }
 }

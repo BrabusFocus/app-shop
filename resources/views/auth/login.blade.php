@@ -27,9 +27,9 @@
 								<div class="content">
 									<div class="input-group">
 										<span class="input-group-addon">
-											<i class="material-icons">email</i>
+											<i class="material-icons">fingerprint</i>
 										</span>
-                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email...">
+                    <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username...">
 									</div>
 
 									<div class="input-group">
