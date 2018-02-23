@@ -65,4 +65,10 @@ class LoginController extends Controller
       }
       return $this->redirectTo;
     }
+
+    /**
+     * Este metodo se registribe para lograr iniciar session con el campo username y no con el
+     * email que viene por defecto
+     */
+
 }

@@ -13,6 +13,9 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
+     /**
+      * Manejar la solictudes entrantes
+      */
     public function handle($request, Closure $next)
     {
       /**
@@ -21,6 +24,10 @@ class AdminMiddleware
         if (!auth()->user()->admin) {
           return redirect('/');
         }
+        /**
+         * Que proceda con ejecucion de otro Middleware
+         * Los middle se ejecutan otro tras otro.
+         */
         return $next($request);
     }
 }
